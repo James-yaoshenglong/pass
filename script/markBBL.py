@@ -7,6 +7,7 @@ file_path = os.path.dirname(os.path.realpath(__file__))
 
 PASS_FLAGS = [
     "clang",
+    "-flegacy-pass-manager",
     "-Xclang",
     "-load",
     "-Xclang",
