@@ -57,7 +57,7 @@ void timestamp(){
             struct timeval tv;
             gettimeofday(&tv, NULL);
             time = tv.tv_sec*1000000+tv.tv_usec;
-            // fprintf(f, "%lld", time);
+            fprintf(f, "%lld", time);
             fclose(f);
         }
     }

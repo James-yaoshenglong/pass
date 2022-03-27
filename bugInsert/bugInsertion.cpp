@@ -72,12 +72,12 @@ namespace {
             break;
           case 4 : sprintf(myasm, bofRegAsm, "rdx", bug.step, bug.chunk, bug.loop, bug.p, bug.q);
             break;
-          default : sprintf(myasm, bofStackAsm, bug.pos-5, bug.step, bug.chunk, bug.loop, bug.p, bug.q);
+          default : sprintf(myasm, bofStackAsm, bug.pos-5+STACK_SHIFT, bug.step, bug.chunk, bug.loop, bug.p, bug.q);
             break;
         }
-        char myconstraint[256]="i1";
+        char myconstraint[256]="";
         FunctionType *VoidFunTy = FunctionType::get(Type::getVoidTy(context), {}, false);
-        CallInst *Result = CallInst::Create(InlineAsm::get(VoidFunTy, myasm, myconstraint, true));
+        CallInst *Result = CallInst::Create(InlineAsm::get(VoidFunTy, myasm, myconstraint, true, false, llvm::InlineAsm::AD_Intel));
         BasicBlock& insertTarget = bb;
         Result->insertBefore(dyn_cast<Instruction>(insertTarget.begin()));
       }
