@@ -11,7 +11,8 @@ PASS_FLAGS = [
     "-Xclang",
     "-load",
     "-Xclang",
-    file_path+"/../lib/libBugInsertion.so" 
+    file_path+"/../lib/libBugInsertion.so", 
+    "-lm"
 ]
 
 CFLAGS = PASS_FLAGS+sys.argv[1:]

@@ -59,6 +59,15 @@ namespace {
     int i=0;
     for (BasicBlock& bb : F)
     {
+      // //insert heavy calc
+      // char myconstraint[256]="";
+      // FunctionType *VoidFunTy = FunctionType::get(Type::getVoidTy(context), {}, false);
+      // CallInst *Result = CallInst::Create(InlineAsm::get(VoidFunTy, heavyCalcAsm, myconstraint, true, false, llvm::InlineAsm::AD_Intel));
+      // BasicBlock& insertTarget = bb;
+      // Result->insertBefore(dyn_cast<Instruction>(insertTarget.begin()));
+
+
+
       // here is nearly same as in the clang compiler which process the inline assembely
       if(block_list.find(i) != block_list.end()){
         Bug bug = block_list.find(i)->second;
